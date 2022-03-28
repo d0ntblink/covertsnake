@@ -5,7 +5,7 @@
 
 [Github Link](https://github.com/d0ntblink/covertsnake)
 
-![Logo](./../Extras/logo.png)
+![Logo](https://github.com/d0ntblink/covertsnake/blob/master/Extras/logo.png)
 
 ## Requirements
 
