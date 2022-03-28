@@ -36,6 +36,9 @@ TLDR: first a DNS query is sent to the server that has the file name encoded via
 
 ### Soruces
 https://github.com/zaheercena/Covert-TCP-IP-Protocol/blob/master/covert_tcp.c
+
 https://github.com/syn53/packetagent
+
 https://journals.uic.edu/ojs/index.php/fm/article/view/528/449
+
 https://www.geeksforgeeks.org/progress-bars-in-python/
