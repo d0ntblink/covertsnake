@@ -41,7 +41,7 @@ The first packet will be sent from the client which has the name of the file in 
 - Byte array is used to hold bytes before they are modified.
 - For every byte that will be sent from the client side, **0xff** is added to them and taken on the server side.
 
-##Soruces
+## Soruces
 
 https://github.com/zaheercena/Covert-TCP-IP-Protocol/blob/master/covert_tcp.c
 
