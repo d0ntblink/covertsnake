@@ -30,7 +30,7 @@ Tested on
 * Python
 
 ## Documents
-* [Intro](https://github.com/d0ntblink/gutenzahler/blob/master/Documents/intro.pdf)
-* [Design](https://github.com/d0ntblink/gutenzahler/blob/master/Documents/design.pdf)
-* [Testing](https://github.com/d0ntblink/gutenzahler/blob/master/Documents/testing.pdf)
-* [Manual](https://github.com/d0ntblink/gutenzahler/blob/master/Documents/usermanual.pdf)
+* [Intro](https://github.com/d0ntblink/covertsnake/blob/master/Documents/intro.pdf)
+* [Design](https://github.com/d0ntblink/covertsnake/blob/master/Documents/design.pdf)
+* [Testing](https://github.com/d0ntblink/covertsnake/blob/master/Documents/testing.pdf)
+* [Manual](https://github.com/d0ntblink/covertsnake/blob/master/Documents/usermanual.pdf)
