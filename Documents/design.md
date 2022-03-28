@@ -1,40 +1,48 @@
-# covertsnake
-## Gary. K and Amir. Z
+# Assignment 4 - CoverSnake by Garshasb Khodayari and Amir Zilabi
 ### 3/27/2022
-
-
 [Github Link](https://github.com/d0ntblink/covertsnake)
 
+Team members divided the workload of this project into the following:
 
-### Intial Ideas
-- maybe build a GUI for practice
-- I want a progress bar (tqdm)
-- implement key exchange if possible
-- use scapy to change the header and send/recieve packets
-- try 5 diffrent files to steal. a video, a picture, a audio, one doc and a zip file
-- make a debug mode
+- Garshasb Khodayari - Application and Testing
+- Amir Zilabi - Documentation and Design
 
-### Hiding the Packets
-since i cant use the id, sequnce or acknowledge seq i will use the length part of the IP header to hide information in. the packets will be DNS Quaries to google.com. since the  low number Bytes wont deliver since the lenght will be lower than the actual packet size, i will be add a 0xff to each byte and then taking it off on the server side.
+## Design
 
-the first packet send from the client has the name of the file encode via base64.
-every byte after that is saved by the server and added to a bytearray to build back the file.
+### Initial Ideas
 
-a google.ca (instead of google.com) dns quary will tell the server that all the information has been sent and it can write the file
+- Possible implementation of GUI for practice
+- Implement a progress bar
+- Possible implementation of key exchange
+- Use Scapy to change the header and send/receive packets
+- Implementation of a debug mode
+- Create and test the script with 5 files:
 
-TLDR: first a DNS query is sent to the server that has the file name encoded via base64 in it. then there are google.com queries sent to the server that have the infromation hidden in their IP.lenght header. a final google.ca dns query tells the server that all the bytes have been transfered and it can create the file.
+1. Video
+2. Image
+3. Audio
+4. Document
+5. Zip file
 
-### Rest of the script
-- scapy will handle the packet creation and reading.
-- files are open and written as binary in python
-- tqdm used to build a progress bar for client
-- base64 library used to encode and decode strings
-- bytearray is used to hold Bytes before they are modified.
-- for each byte before sending on the client side, 0xff is added to them and 0xff is taken off on the server side
+## Hiding the Packets
 
+Since We cannot use the ID, sequence, or acknowledge sequence, we will use the length section of the IP header to hide the relative information. In addition, the packets will be DNS Queries to **Google.com**. Consequently, since the low number of bytes will not deliver due to the length being lower than the actual packet size, we will add **0xff** to each byte and remove on the server side.
 
+The first packet will be sent from the client which has the name of the file in base64; additionally, every byte after that is saved by the server and added to a byte array to build back the file.
 
-### Soruces
+**Too Long, Didn't Read (TLDR)** First DNS query is sent to the server that has the file name encoded in base64. On the side, there are **google.com** queries sent to the server that have the information hidden in their **IP.length header**. To finalize, a final **google.ca** DNS query will communicate with the server that all the bytes have been transferred and the file will be created.
+
+## Rest of the Script
+
+- Scapy will handle the packet creation and reading.
+- Files are open and written as binary in Python
+- TDQM used to build a progress bar for the client
+- Base64 library used to encode and decode strings
+- Byte array is used to hold bytes before they are modified.
+- For every byte that will be sent from the client side, **0xff** is added to them and taken on the server side.
+
+##Soruces
+
 https://github.com/zaheercena/Covert-TCP-IP-Protocol/blob/master/covert_tcp.c
 
 https://github.com/syn53/packetagent
