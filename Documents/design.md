@@ -4,8 +4,8 @@
 
 Team members divided the workload of this project into the following:
 
-- Garshasb Khodayari - Application and Testing
-- Amir Zilabi - Documentation and Design
+- Garshasb Khodayari - Design, Programming and Testing
+- Amir Zilabi - Documentation
 
 ## Design
 
