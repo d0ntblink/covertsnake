@@ -26,7 +26,7 @@ Team members divided the workload of this project into the following:
 
 ## Hiding the Packets
 
-Since We cannot use the ID, sequence, or acknowledge sequence, we will use the length section of the IP header to hide the relative information. In addition, the packets will be DNS Queries to **Google.com**. Consequently, since the low number of bytes will not deliver due to the length being lower than the actual packet size, we will add **0xff** to each byte and remove on the server side.
+Since we cannot use the ID, sequence, or acknowledge sequence, we will use the length section of the IP header to hide the relative information. In addition, the packets will be DNS Queries to **Google.com**. Consequently, since the low number of bytes will not deliver due to the length being lower than the actual packet size, we will add **0xff** to each byte and remove on the server side.
 
 The first packet will be sent from the client which has the name of the file in base64; additionally, every byte after that is saved by the server and added to a byte array to build back the file.
 
