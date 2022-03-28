@@ -1,4 +1,4 @@
-# coversnake
+# covertsnake
 ## Gary. K and Amir. Z
 ### 3/27/2022
 
