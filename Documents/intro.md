@@ -26,8 +26,10 @@ Tested on
 * Kali Linux
 
 ## Languages
-* Markdown
 * Python
+  *  Python version 3 was utilized for testing - latest version retrieved from **python.org**
+* Markdown
+  * The entire report was formatted with Markdown - .md 
 
 ## Documents
 * [Intro](https://github.com/d0ntblink/covertsnake/blob/master/Documents/intro.pdf)
